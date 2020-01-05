@@ -8,20 +8,19 @@ spring:
       # <= 5.x: com.mysql.jdbc.Driver
       driver-class-name: com.mysql.cj.jdbc.Driver
 
-#  cloud:
-#    nacos:
-#      discovery:
-#        # 指定nacos server的地址
-#        server-addr: localhost:8848
+  cloud:
+    nacos:
+      discovery:
+        # 指定nacos server的地址
+        server-addr: 148.70.34.49:8848
 #        # 指定namespace
-#        # namespace: 56116141-d837-4d15-8842-94e153bb6cfb
-#        # NJ
-#        # 指定集群名称
-#        cluster-name: BJ
-#        metadata:
-#          instance: c
-#          haha: hehe
-#          version: v1
+#        namespace: 5edc65c6-0c5f-4191-8bec-53aafefaa8b2
+        # NJ
+        # 指定集群名称
+        cluster-name: WH
+        metadata:
+          version: v1
+          target-version: v1
 #    stream:
 #      rocketmq:
 #        binder:
@@ -30,9 +29,9 @@ spring:
 #        input:
 #          destination: add-bonus
 #          group: binder-group
-#  application:
-#    # 服务名称尽量用-，不要用_，不要用特殊字符
-#    name: user-center
+  application:
+    # 服务名称尽量用-，不要用_，不要用特殊字符
+    name: user-center
 #  zipkin:
 #    base-url: http://localhost:9411/
 #    discoveryClientEnabled: false
@@ -40,8 +39,8 @@ spring:
 #    sampler:
 #      # 抽样率，默认是0.1（10%）
 #      probability: 1.0
-#server:
-#  port: 8081
+server:
+  port: 8090
 #logging:
 #  level:
 #    com.alibaba.nacos: error

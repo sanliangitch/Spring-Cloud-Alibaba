@@ -44,21 +44,33 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.8</version>
             <scope>provided</scope>
         </dependency>
-        <!--spring-boot-starter-xxxx-->
-        <!--xxxx-spring-boot-starter-->
-        <!--spring-cloud-starter-{spring cloud子项目的名称}-[{模块名称}]-->
-        <!--feign spring-cloud-starter-openfeign-->
-        <!--sentinel spring-cloud-starter-alibaba-sentinel-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-spring-boot-starter</artifactId>
@@ -88,25 +100,13 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.binarywang</groupId>
-            <artifactId>weixin-java-miniapp</artifactId>
-            <version>3.5.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba.csp</groupId>-->
+            <!--<artifactId>sentinel-datasource-nacos</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <dependencyManagement>

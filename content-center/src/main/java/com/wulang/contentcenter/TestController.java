@@ -14,12 +14,15 @@ import com.wulang.contentcenter.domain.dto.user.UserDTO;
 import com.wulang.contentcenter.domain.entity.content.Share;
 import com.wulang.contentcenter.feignclient.TestBaiduFeignClient;
 import com.wulang.contentcenter.feignclient.TestUserCenterFeignClient;
+import com.wulang.contentcenter.rocketmq.MySource;
 import com.wulang.contentcenter.sentineltest.TestControllerBlockHandlerClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -220,4 +223,26 @@ public class TestController {
 //                userId
 //            );
 //    }
+
+    @Autowired(required = false)
+    private Source source;
+
+    @GetMapping("test-stream")
+    public String testStream(){
+        this.source.output().send(
+                MessageBuilder.withPayload("消息体").build()
+        );
+        return "sessurce";
+    }
+
+    @Autowired(required = false)
+    private MySource mySource;
+
+    @GetMapping("my-stream")
+    public String myStream(){
+        this.mySource.output().send(
+                MessageBuilder.withPayload("my-stream消息体").build()
+        );
+        return "sessurce";
+    }
 }

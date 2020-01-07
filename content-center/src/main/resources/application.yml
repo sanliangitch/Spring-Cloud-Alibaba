@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://154.8.216.45:3306/content_center
+    url: jdbc:mysql://127.0.0.1:3306/content_center?serverTimezone=UTC
     hikari:
       username: root
-      password: 123456
+      password: root
       # >= 6.x: com.mysql.cj.jdbc.Driver
       # <= 5.x: com.mysql.jdbc.Driver
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -29,7 +29,22 @@ spring:
 #        将控制台部署在公网，本机启动连接出现错误日志
 #        参考博客：https://www.cnblogs.com/sky-chen/p/11237133.html#autoid-0-0-0-0-0-0
         dashboard: 127.0.0.1:8080
-  #    stream:
+    stream:
+      rocketmq:
+        binder:
+          name-server: 127.0.0.1:9876
+        binders:
+          output:
+            producer:
+              transactional: true
+              group: tx-add-bonus-group
+      binders:
+        output:
+          # 用来指定topic
+          destination: add-bonus
+#        my-output:
+#          destination: stream-my-topic
+  #      stream:
 #      rocketmq:
 #        binder:
 #          name-server: 127.0.0.1:9876
@@ -38,7 +53,7 @@ spring:
 #            producer:
 #              transactional: true
 #              group: tx-add-bonus-group
-#      bindings:
+##      bindings:
 #        output:
 #          # 用来指定topic
 #          destination: add-bonus
@@ -63,7 +78,7 @@ ribbon:
 logging:
   level:
     com.wulang.contentcenter.feignclient.UserCenterFeignClient: debug
-#    com.alibaba.nacos: error
+    com.alibaba.nacos: error
 feign:
   sentinel:
     # 为feign整合sentinel
@@ -99,3 +114,8 @@ resttemplate:
 #  secret: aaaaaaabbbbbbcccccdddddaaaaaaabbbbbbcccccdddddaaaaaaabbbbbbcccccddddd
 #  # 有效期，单位秒，默认2周
 #  expire-time-in-second: 1209600
+#rocketmq:
+#  name-server: 127.0.0.1:9876
+#  producer:
+##    必须指定group
+#    group: test-group

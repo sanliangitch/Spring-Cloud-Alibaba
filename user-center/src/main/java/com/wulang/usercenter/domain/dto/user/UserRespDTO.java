@@ -1,4 +1,4 @@
-package com.wulang.usercenter.domain.entity.user;
+package com.wulang.usercenter.domain.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,17 +9,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class UserLoginDTO {
+public class UserRespDTO {
     /**
-     * code
+     * id
      */
-    private String code;
-
+    private Integer id;
     /**
      * 头像地址
      */
     private String avatarUrl;
-
+    /**
+     * 积分
+     */
+    private Integer bonus;
     /**
      * 微信昵称
      */

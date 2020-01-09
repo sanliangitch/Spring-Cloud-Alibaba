@@ -1,4 +1,4 @@
-package com.wulang.usercenter.auth;
+package com.wulang.contentcenter.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

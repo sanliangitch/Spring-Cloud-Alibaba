@@ -1,5 +1,6 @@
 package com.wulang.contentcenter.controller.content;
 
+import com.wulang.contentcenter.auth.CheckAuthorization;
 import com.wulang.contentcenter.domain.dto.content.ShareAuditDTO;
 import com.wulang.contentcenter.domain.entity.content.Share;
 import com.wulang.contentcenter.service.content.ShareService;
@@ -25,6 +26,7 @@ public class ShareAdminController {
      * @return
      */
     @PutMapping("/audit/{id}")
+    @CheckAuthorization("admin")
     public Share auditById(@PathVariable Integer id, @RequestBody ShareAuditDTO auditDTO) {
         // TODO 认证授权
         return this.shareService.auditById(id, auditDTO);

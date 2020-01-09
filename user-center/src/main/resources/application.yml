@@ -37,19 +37,20 @@ spring:
   application:
     # 服务名称尽量用-，不要用_，不要用特殊字符
     name: user-center
-#  zipkin:
-#    base-url: http://localhost:9411/
-#    discoveryClientEnabled: false
-#  sleuth:
-#    sampler:
-#      # 抽样率，默认是0.1（10%）
-#      probability: 1.0
+  zipkin:
+    base-url: http://localhost:9411/
+#    只要设置成false，那么就会把 http://localhost:9411/ 当成一个URL，而不是服务名称了
+    discoveryClientEnabled: false
+  sleuth:
+    sampler:
+      # 抽样率，默认是0.1（10%）,
+      probability: 1.0
 server:
   port: 8090
 logging:
   level:
     com.alibaba.nacos: error
-#    org.springframework.cloud.sleuth: debug
+    org.springframework.cloud.sleuth: debug
 jwt:
   secret: aaaaaaabbbbbbcccccdddddaaaaaaabbbbbbcccccdddddaaaaaaabbbbbbcccccddddd
   # 有效期，单位秒，默认2周

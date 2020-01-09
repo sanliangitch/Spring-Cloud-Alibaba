@@ -63,6 +63,14 @@ spring:
 # 解决两个接口代理问题
   main:
     allow-bean-definition-overriding: true
+  zipkin:
+    base-url: http://localhost:9411/
+    #    只要设置成false，那么就会把 http://localhost:9411/ 当成一个URL，而不是服务名称了
+    discoveryClientEnabled: false
+  sleuth:
+    sampler:
+      # 抽样率，默认是0.1（10%）,
+      probability: 1.0
 server:
   port: 8010
 #配置文件配置 ribbon 的细粒度
@@ -88,8 +96,8 @@ feign:
       # 全局配置
       default:
         loggerLevel: full
-#        requestInterceptors:
-#          - com.itmuch.contentcenter.feignclient.interceptor.TokenRelayRequestIntecepor
+        requestInterceptors:
+          - com.wulang.contentcenter.feignclient.interceptor.TokenRelayRequestIntecepor
   httpclient:
     # 让feign使用apache httpclient做请求；而不是默认的urlconnection
     enabled: true

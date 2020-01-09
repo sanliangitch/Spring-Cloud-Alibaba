@@ -3,13 +3,13 @@ server:
 spring:
   application:
     name: gateway
-#  zipkin:
-#    base-url: http://localhost:9411/
-#    discoveryClientEnabled: false
-#  sleuth:
-#    sampler:
-#      # \u62BD\u6837\u7387\uFF0C\u9ED8\u8BA4\u662F0.1\uFF0810%\uFF09
-#      probability: 1.0
+  zipkin:
+    base-url: http://localhost:9411/
+    discoveryClientEnabled: false
+  sleuth:
+    sampler:
+      # 只要设置成false，那么就会把 http://localhost:9411/ 当成一个URL，而不是服务名称了
+      probability: 1.0
   cloud:
     nacos:
       discovery:
@@ -17,7 +17,7 @@ spring:
     gateway:
       discovery:
         locator:
-          # \u8BA9gateway\u901A\u8FC7\u670D\u52A1\u53D1\u73B0\u7EC4\u4EF6\u627E\u5230\u5176\u4ED6\u7684\u5FAE\u670D\u52A1
+          # 让gateway通过服务发现组件找到其他的微服务
           enabled: true
       routes:
       - id: user_route

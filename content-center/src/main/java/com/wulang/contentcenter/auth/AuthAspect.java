@@ -1,6 +1,6 @@
-package com.wulang.usercenter.auth;
+package com.wulang.contentcenter.auth;
 
-import com.wulang.usercenter.util.JwtOperator;
+import com.wulang.contentcenter.util.JwtOperator;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -17,13 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
+/**
+ * 注意异常捕获的范围
+ */
 @Aspect
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AuthAspect {
     private final JwtOperator jwtOperator;
 
-    @Around("@annotation(com.wulang.usercenter.auth.CheckLogin)")
+    @Around("@annotation(com.wulang.contentcenter.auth.CheckLogin)")
     public Object checkLogin(ProceedingJoinPoint point) throws Throwable {
         checkToken();
         return point.proceed();
@@ -58,7 +61,7 @@ public class AuthAspect {
         return attributes.getRequest();
     }
 
-    @Around("@annotation(com.wulang.usercenter.auth.CheckAuthorization)")
+    @Around("@annotation(com.wulang.contentcenter.auth.CheckAuthorization)")
     public Object checkAuthorization(ProceedingJoinPoint point) throws Throwable {
         try {
             // 1. 验证token是否合法；
